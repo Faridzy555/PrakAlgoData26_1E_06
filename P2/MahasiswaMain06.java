@@ -17,5 +17,12 @@ public class MahasiswaMain06 {
         mhs1.UpdateIPK(3.95);
         mhs1.TampilkanInformasi();
         System.out.println();
+
+        Mahasiswa06 mhs2 = new Mahasiswa06("Bruce Wayne", "254107020234",3.87, "TI 1E");
+        mhs2.UpdateIPK(3.98);
+        mhs2.TampilkanInformasi();
+        System.out.println();
+        
+        Mahasiswa06 mhsRidzy = new Mahasiswa06("Ridzy", "123456789", 3.74, "TI-1E");
     }
 }
