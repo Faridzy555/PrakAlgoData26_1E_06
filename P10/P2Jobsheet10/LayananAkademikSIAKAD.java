@@ -1,0 +1,84 @@
+package P10.P2Jobsheet10;
+
+import java.util.Scanner;
+
+public class LayananAkademikSIAKAD {
+    public static void main(String[] args) {
+        System.out.println();
+
+        Scanner sc = new Scanner(System.in);
+
+        AntrianLayanan antrian = new AntrianLayanan(5);
+
+        int pilih;
+        do {
+            System.out.println("Menu Antrian Akademik:");
+            System.out.println("1. Tambah Mahasiswa");
+            System.out.println("2. Layani Mahasiswa");
+            System.out.println("3. Lihat Terdepan");
+            System.out.println("4. Lihat Semua");
+            System.out.println("5. Jumlah Antrian");
+            System.out.println("6. Lihat Mahasiswa Paling Belakang");
+            System.out.println("0. Keluar");
+            System.out.print("Pilih menu: ");
+            pilih = sc.nextInt();
+            sc.nextLine();
+
+            switch (pilih) {
+                case 1:
+                    System.out.print("NIM: ");
+                    String nim = sc.nextLine();
+                    System.out.print("Nama: ");
+                    String nama = sc.nextLine();
+                    System.out.print("Prodi: ");
+                    String prodi = sc.nextLine();
+                    System.out.print("Kelas: ");
+                    String kelas = sc.nextLine();
+
+                    Mahasiswa06 m = new Mahasiswa06(nim, nama, prodi, kelas);
+                    antrian.enqueue(m);
+                    System.out.println();
+                    break;
+
+                case 2:
+                    Mahasiswa06 keluar = antrian.dequeue();
+                    if (keluar != null) {
+                        System.out.print("Melayani: ");
+                        keluar.tampilkanData();
+                    }
+                    System.out.println();
+                    break;
+
+                case 3:
+                    antrian.lihatTerdepan();
+                    System.out.println();
+                    break;
+
+                case 4:
+                    antrian.tampilkanSemua();
+                    System.out.println();
+                    break;
+
+                case 5:
+                    System.out.println("Jumlah antrian: " + antrian.getJumlahAntrian());
+                    System.out.println();
+                    break;
+
+                case 6:
+                    antrian.lihatAkhir();
+                    System.out.println();
+                    break;
+
+                case 0:
+                    System.out.println("Terima kasih");
+                    System.out.println();
+                    break;
+
+                default:
+                    System.out.println("Pilihan salah!");
+                    System.out.println();
+            }
+
+        } while (pilih != 0);
+    }
+}
