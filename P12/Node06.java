@@ -1,0 +1,16 @@
+package P12;
+
+public class Node06 {
+
+    // deklarasi Node06
+    Mahasiswa06 data;
+    Node06 prev;
+    Node06 next;
+
+    // konstruktor Node06
+    public Node06(Mahasiswa06 data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
