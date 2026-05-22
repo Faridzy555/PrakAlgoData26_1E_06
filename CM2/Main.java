@@ -8,8 +8,9 @@ public class Main {
 
         Scanner rid = new Scanner(System.in);
 
-        DLLPembeli antrian = new DLLPembeli();
+        DLLPembeli antrean = new DLLPembeli();
         DLLPesanan pesanan = new DLLPesanan();
+        LinkedListRekapAntrian rekap = new LinkedListRekapAntrian();
 
         int pilih;
 
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian dan Pesan");
             System.out.println("4. Laporan Pesanan");
+            System.out.println("5. Rekap Antrian");
             System.out.println("0. Keluar");
             System.out.println();
             System.out.print("Pilih Menu: ");
@@ -26,30 +28,28 @@ public class Main {
             rid.nextLine();
 
             switch (pilih) {
+
                 case 1:
-                    // input pembeli
                     System.out.print("Nama Pembeli: ");
                     String nama = rid.nextLine();
                     System.out.print("No HP: ");
                     String hp = rid.nextLine();
-                    // buat object pembeli
+                    System.out.print("Jam Antri: ");
+                    int jam = rid.nextInt();
                     Pembeli pembeli = new Pembeli(nama, hp);
-                    // tambah antrian
-                    antrian.tambahAntrian(pembeli);
+                    antrean.tambahAntrian(pembeli);
+                    rekap.updateRekap(jam);
                     System.out.println();
                     break;
                 case 2:
-                    // tampil antrian
-                    antrian.cetakAntrian();
+                    antrean.cetakAntrian();
                     System.out.println();
                     break;
                 case 3:
-                    // hapus antrian depan
-                    Pembeli keluar = antrian.hapusAntrian();
+                    Pembeli keluar = antrean.hapusAntrian();
                     if (keluar == null) {
                         System.out.println("Antrian kosong");
                     } else {
-                        // input pesanan
                         System.out.print("Kode Pesanan: ");
                         int kode = rid.nextInt();
                         rid.nextLine();
@@ -57,17 +57,19 @@ public class Main {
                         String namaPesanan = rid.nextLine();
                         System.out.print("Harga: ");
                         int harga = rid.nextInt();
-                        // buat object pesanan
                         Pesanan pesan = new Pesanan(kode, namaPesanan, harga);
-                        // simpan pesanan
                         pesanan.tambahPesanan(pesan);
                         System.out.println(keluar.namaPembeli + " telah memesan " + namaPesanan);
+                        System.out.println();
                     }
-                    System.out.println();
                     break;
                 case 4:
-                    // tampil laporan pesanan
                     pesanan.tampilPesanan();
+                    System.out.println();
+                    break;
+                case 5:
+                    rekap.tampilRekap();
+                    rekap.jamTerbanyak();
                     System.out.println();
                     break;
                 case 0:
